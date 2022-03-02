@@ -63,13 +63,11 @@ def main():
 
     population = ['w_del', 'w_ins_same', 'w_ins_syn', 'w_sub_syn', 'w_paraph', 'c_del',
                   'c_ins', 'c_sub_pronounce', 'c_sub_shape', 'c_paraph']
-    weight = [0.025, 0.1175, 0.1175, 0.11, 0.13, 0.025, 0.235, 0.055, 0.055, 0.13]
+    weight = [0.11, 0.065, 0.065, 0.235, 0.025, 0.11, 0.13, 0.1175, 0.1175, 0.025]
 
     augment_list = {}
     with open(args.save_file, 'w', encoding='utf=8') as w_file:
         for key, value in to_augment_dlist.items():
-            tmp_array = []
-            print(key)
             for i in range(args.augment_count):
                 type = random.choices(population, weight)[0]
                 augment_sent = None
@@ -93,9 +91,8 @@ def main():
                     augment_sent = substitution.substitute_shape_char(key, char_shape_dict)
                 if type == 'c_paraph':
                     augment_sent = local_paraphrase.exchange_char(key)
-                if augment_sent:
-                    tmp_array.append(augment_sent)
-            w_file.write(key + '\n' + '\n'.join(tmp_array) + '\n')
+                if augment_sent and augment_sent != '' and augment_sent != ' ':
+                    w_file.write(augment_sent + '\t' + key + '\n')
     # # 構建INSERT類型糾錯 1147+13507
     # augment_sent = delete.delete_word('万一 您 不想 改善目前 的 情况 的话 ， 我们 会 向 法院 告贵 工厂 ， 也 要 跟 媒体 说 我们 住民 的 困扰 。')
     # print(augment_sent)
