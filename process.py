@@ -30,6 +30,13 @@ def main():
                     tokenized_sent = ' '.join(jieba.cut(correct))
                     to_augment_dlist[correct] = tokenized_sent
 
+        if 'babymom' in args.augment_file:
+            for d in raw_data:
+                correct = d.strip().split('\t')[2]
+                if correct not in to_augment_dlist:
+                    tokenized_sent = ' '.join(jieba.cut(correct))
+                    to_augment_dlist[correct] = tokenized_sent
+
     # print(len(to_augment_dlist))
     # print(to_augment_dlist)
 
