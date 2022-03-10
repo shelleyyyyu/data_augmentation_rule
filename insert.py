@@ -4,18 +4,23 @@ import synonyms
 def insert_word(sent):
     # 万一您不想改善目前的情况的话 ， 我们会向法院告贵工厂，也要跟媒体说我们住民的困扰。
     tmp_list = list(sent.split(' '))
-    char_index_to_insert = random.sample([i for i in range(len(tmp_list))], 1)[0]
-    incorrect_sent = tmp_list[:char_index_to_insert] + [tmp_list[char_index_to_insert]] + tmp_list[char_index_to_insert:]
-    correct_sent = tmp_list[:char_index_to_insert] + ['-NONE-'] + tmp_list[char_index_to_insert:]
-    return ''.join(incorrect_sent)#, ''.join(correct_sent)
+    if len(tmp_list) > 2:
+        char_index_to_insert = random.sample([i for i in range(len(tmp_list))], 1)[0]
+        incorrect_sent = tmp_list[:char_index_to_insert] + [tmp_list[char_index_to_insert]] + tmp_list[char_index_to_insert:]
+        correct_sent = tmp_list[:char_index_to_insert] + ['-NONE-'] + tmp_list[char_index_to_insert:]
+        return ''.join(incorrect_sent)#, ''.join(correct_sent)
+    else:
+        return None
 
 def insert_char(sent):
     # 万一您不想改善目前的情况的话 ， 我们会向法院告贵工厂，也要跟媒体说我们住民的困扰。
     tmp_list = list(sent)
-    char_index_to_insert = random.sample([i for i in range(len(tmp_list))], 1)[0]
-    incorrect_sent = tmp_list[:char_index_to_insert] + [tmp_list[char_index_to_insert]] + tmp_list[char_index_to_insert:]
-    correct_sent = tmp_list[:char_index_to_insert] + ['-NONE-'] + tmp_list[char_index_to_insert:]
-    return ''.join(incorrect_sent)#, ''.join(correct_sent)
+    if len(tmp_list) > 2:
+        char_index_to_insert = random.sample([i for i in range(len(tmp_list))], 1)[0]
+        incorrect_sent = tmp_list[:char_index_to_insert] + [tmp_list[char_index_to_insert]] + tmp_list[char_index_to_insert:]
+        correct_sent = tmp_list[:char_index_to_insert] + ['-NONE-'] + tmp_list[char_index_to_insert:]
+        return ''.join(incorrect_sent)#, ''.join(correct_sent)
+    return None
 
 def insert_synonyms_word(sent):
     # 万一您不想改善目前的情况的话 ， 我们会向法院告贵工厂，也要跟媒体说我们住民的困扰。
