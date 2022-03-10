@@ -39,10 +39,11 @@ def main():
 
         if 'zh_full_merge_data' in args.augment_file:
             for d in raw_data:
-                correct = d.strip().split('\t')[1]
-                if correct not in to_augment_dlist:
-                    tokenized_sent = ' '.join(jieba.cut(correct))
-                    to_augment_dlist[correct] = tokenized_sent
+                if len(d.strip().split('\t')) == 2:
+                    correct = d.strip().split('\t')[1]
+                    if correct not in to_augment_dlist:
+                        tokenized_sent = ' '.join(jieba.cut(correct))
+                        to_augment_dlist[correct] = tokenized_sent
 
     # print(len(to_augment_dlist))
     # print(to_augment_dlist)
