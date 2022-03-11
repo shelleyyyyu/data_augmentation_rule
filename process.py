@@ -115,6 +115,8 @@ def main():
                     augment_sent = local_paraphrase.exchange_char(key)
                 if augment_sent and augment_sent != '' and augment_sent != ' ':
                     w_file.write(augment_sent + '\t' + key + '\n')
+                w_file.write(value + '\t' + key + '\n')
+
     # # 構建INSERT類型糾錯 1147+13507
     # augment_sent = delete.delete_word('万一 您 不想 改善目前 的 情况 的话 ， 我们 会 向 法院 告贵 工厂 ， 也 要 跟 媒体 说 我们 住民 的 困扰 。')
     # print(augment_sent)
