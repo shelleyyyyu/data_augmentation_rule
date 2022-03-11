@@ -22,7 +22,7 @@ def main():
     with open(args.augment_file, 'r', encoding='utf-8') as file:
         raw_data = file.readlines()
         # Special Handle for each dataset
-        if 'SIGHAN' in args.augment_file:
+        if 'SIGHAN' in args.augment_file or 'OCR' in args.augment_file:
             for d in raw_data:
                 incorrect = d.strip().split('\t')[0]
                 correct = d.strip().split('\t')[1]
