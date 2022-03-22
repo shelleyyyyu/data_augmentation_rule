@@ -171,6 +171,8 @@ def main():
         with open(args.save_file, 'w', encoding='utf=8') as w_file:
             for i in range(args.augment_count):
                 #for key, value in to_augment_dlist.items():
+                if i % 10000 == 0:
+                    print('Current Augment Count: %d' %i)
                 to_augment_sent = random.sample(to_augment_dlist.keys(), 1)[0]
                 key = to_augment_sent
                 value = to_augment_dlist[to_augment_sent]
